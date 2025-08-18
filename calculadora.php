@@ -1,9 +1,27 @@
 <?php
 $v1 = $_GET["v1"] ?? 0;
 $v2 = $_GET["v2"] ?? 0;
+$op = $_GET["operacao"] ?? '+';
 
+$result = 0;
 
-$result = $v1 + $v2;
+switch ($op) {
+  case '+':
+    $result = $v1 + $v2;
+    break;
+  case '-':
+    $result = $v1 - $v2;
+    break;
+  case '*':
+    $result = $v1 * $v2;
+    break;
+  case '/':
+    if ($v2 != 0) {
+      $result = $v1 / $v2;
+      break;
+    }
+}
+
 
 ?>
 
