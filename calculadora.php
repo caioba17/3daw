@@ -1,7 +1,21 @@
 <?php
-$v1 = $_GET["a"] ?? 0;
-$v2 = $_GET["b"] ?? 0;
-$op = $_GET["operacao"] ?? '+';
+$method = $_SERVER['REQUEST_METHOD'];
+
+$v1 = 0;
+$v2 = 0;
+$op = '+';
+
+if ($method == 'POST') {
+  echo "<br/>É POST<br/>";
+  $v1 = $_POST["a"] ?? 0;
+  $v2 = $_POST["b"] ?? 0;
+  $op = $_POST["operacao"] ?? '+';
+} else {
+  echo "É GET<br/>";
+  $v1 = $_GET["a"] ?? 0;
+  $v2 = $_GET["b"] ?? 0;
+  $op = $_GET["operacao"] ?? '+';
+}
 
 $result = 0;
 
@@ -18,27 +32,23 @@ switch ($op) {
   case '/':
     if ($v2 != 0) {
       $result = $v1 / $v2;
-      break;
+    } else {
+      $result = "Erro: Divisão por zero";
     }
+    break;
+  default:
+    $result = "Operação inválida";
+    break;
 }
-
-
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculadora</title>
 </head>
-
 <body>
-  <?php echo "<h1>Resultado: $result</h1>"; ?>
-
-
+  <h1>Resultado: <?php echo $result; ?></h1>
 </body>
-
-
 </html>
