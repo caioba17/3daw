@@ -1,6 +1,6 @@
 <?php
-$v1 = $_GET["v1"] ?? 0;
-$v2 = $_GET["v2"] ?? 0;
+$v1 = $_GET["a"] ?? 0;
+$v2 = $_GET["b"] ?? 0;
 $op = $_GET["operacao"] ?? '+';
 
 $result = 0;
@@ -31,7 +31,7 @@ switch ($op) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Soma</title>
+  <title>Calculadora</title>
 </head>
 
 <body>
